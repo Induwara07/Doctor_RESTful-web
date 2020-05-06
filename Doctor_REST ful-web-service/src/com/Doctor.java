@@ -20,7 +20,7 @@ public class Doctor {
 		return con;
 	}
 	
-	public String insertDoctor(String regno, String name, String spec, String cont, String hospital)
+	public String insertDoctor(String regno, String name, String spec, String cont,  String add, String email, String hospital)
 	{
 		String output = "";
 		try
@@ -33,7 +33,7 @@ public class Doctor {
 			}
 			
 			// create a prepared statement
-			String query = " insert into doctors(`doctorID`,`doctorCode`,`doctorName`,`doctorSpec`,`doctorCont`,`doctorHospital`) values (?, ?, ?, ?, ?, ?)";
+			String query = " insert into doctors(`doctorID`,`doctorCode`,`doctorName`,`doctorSpec`,`doctorCont`,`doctorAdd`,`doctorEmail`,`doctorHospital`) values (?, ?, ?, ?, ?, ?, ?, ?)";
 			
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 			
@@ -43,7 +43,9 @@ public class Doctor {
 			preparedStmt.setString(3, name);
 			preparedStmt.setString(4, spec);
 			preparedStmt.setString(5, cont);
-			preparedStmt.setString(6, hospital);
+			preparedStmt.setString(6, add);
+			preparedStmt.setString(7, email);
+			preparedStmt.setString(8, hospital);
 			
 			// execute the statement
 			preparedStmt.execute();
@@ -79,9 +81,11 @@ public class Doctor {
 			output = "<table border='1'>"
 					+ "<tr><th>Doctor Code</th>"
 					+ "<th>Doctor Name</th>"
-					+ "<th>Doctor Spec</th>"
-					+ "<th>Doctor Cont</th>"
-					+ "<th>Doctor Hospital</th>"
+					+ "<th>Doctor Specilization</th>"
+					+ "<th>Contact Number</th>"
+					+ "<th>Address</th>"
+					+ "<th>Email</th>"
+					+ "<th>Hospital</th>"
 					+ "<th>Update</th>"
 					+ "<th>Remove</th></tr>";
 	
@@ -97,6 +101,8 @@ public class Doctor {
 				String doctorName = rs.getString("doctorName");
 				String doctorSpec = rs.getString("doctorSpec");
 				String doctorCont = rs.getString("doctorCont");
+				String doctorAdd = rs.getString("doctorAdd");
+				String doctorEmail = rs.getString("doctorEmail");
 				String doctorHospital = rs.getString("doctorHospital");
 				
 				// Add into the html table
@@ -104,6 +110,8 @@ public class Doctor {
 				output += "<td>" + doctorName + "</td>";
 				output += "<td>" + doctorSpec + "</td>";
 				output += "<td>" + doctorCont + "</td>";
+				output += "<td>" + doctorAdd + "</td>";
+				output += "<td>" + doctorEmail + "</td>";
 				output += "<td>" + doctorHospital + "</td>";
 			
 				// buttons
@@ -129,7 +137,7 @@ public class Doctor {
 	}
 	
 	
-	public String updateDoctor(String ID, String regno, String name, String spec, String cont, String hospital)
+	public String updateDoctor(String ID, String regno, String name, String spec, String cont, String add, String email, String hospital)
 	{
 		String output = "";
 		
@@ -143,7 +151,7 @@ public class Doctor {
 			}
 			
 			// create a prepared statement
-			String query = "UPDATE doctors SET doctorCode=?,doctorName=?,doctorSpec=?,doctorCont=?,doctorHospital=? WHERE doctorID=?";
+			String query = "UPDATE doctors SET doctorCode=?,doctorName=?,doctorSpec=?,doctorCont=?,doctorAdd=?,doctorEmail=?,doctorHospital=? WHERE doctorID=?";
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 			
 			// binding values
@@ -151,8 +159,10 @@ public class Doctor {
 			preparedStmt.setString(2, name);
 			preparedStmt.setString(3, spec);
 			preparedStmt.setString(4, cont);
-			preparedStmt.setString(5, hospital);
-			preparedStmt.setInt(6, Integer.parseInt(ID));
+			preparedStmt.setString(5, add);
+			preparedStmt.setString(6, email);
+			preparedStmt.setString(7, hospital);
+			preparedStmt.setInt(8, Integer.parseInt(ID));
 			
 			// execute the statement
 			preparedStmt.execute();

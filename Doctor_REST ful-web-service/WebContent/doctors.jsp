@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Doctors Management</title>
+<title>Doctors Management </title>
 
 <link rel="stylesheet" href="Views/bootstrap.min.css">
 <script src="Components/jquery-3.2.1.min.js"></script>
@@ -28,15 +28,23 @@
 				<input id="doctorName" name="doctorName" type="text" class="form-control form-control-sm">
 				<br>
 				
-				 Doctor:
+				Specialization:
 				<input id="doctorSpec" name="doctorSpec" type="text" class="form-control form-control-sm">
 				<br>
 				
-				 Contact No:
+				Contact No:
 				<input id="doctorCont" name="doctorCont" type="text" class="form-control form-control-sm">
 				<br>
+				
+				Address:
+				<input id="doctorAdd" name="doctorAdd" type="text" class="form-control form-control-sm">
+				<br>
+				
+				Email Address:
+				<input id="doctorEmail" name="doctorEmail" type="text" class="form-control form-control-sm">
+				<br>
 				 
-				 Hospital:
+				Hospital:
 				<input id="doctorHospital" name="doctorHospital" type="text" class="form-control form-control-sm">
 				<br>
 				

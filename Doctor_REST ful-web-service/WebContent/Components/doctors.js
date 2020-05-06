@@ -51,7 +51,9 @@ $(document).on("click", ".btnUpdate", function(event)
 	$("#doctorName").val($(this).closest("tr").find('td:eq(1)').text());
 	$("#doctorSpec").val($(this).closest("tr").find('td:eq(2)').text());
 	$("#doctorCont").val($(this).closest("tr").find('td:eq(3)').text());
-	$("#doctorHospital").val($(this).closest("tr").find('td:eq(4)').text());
+	$("#doctorAdd").val($(this).closest("tr").find('td:eq(4)').text());
+	$("#doctorEmail").val($(this).closest("tr").find('td:eq(4)').text());
+	$("#doctorHospital").val($(this).closest("tr").find('td:eq(5)').text());
 });
 
 function onDoctorSaveComplete(response, status)
@@ -134,22 +136,22 @@ function onDoctorDeleteComplete(response, status)
 
 function validateDoctorForm()
 {
-	// CODE
+	// Doctor RegNo.
 	if ($("#doctorCode").val().trim() == "")
 	{
-		return "Insert Doctor Code.";
+		return "Insert Doctor RegNo:.";
 	}
 	
-	// NAME
+	// Doctor Name
 	if ($("#doctorName").val().trim() == "")
 	{
 		return "Insert Doctor Name.";
 	}
 	
-	//PRICE-------------------------------
+	//Doctor Specialization
 	if ($("#doctorSpec").val().trim() == "")
 	{
-		return "Insert Doctor Specilization.";
+		return "Insert Doctor Specialization.";
 	}
 	
 	// is numerical value
@@ -157,15 +159,26 @@ function validateDoctorForm()
 	
 	if (!$.isNumeric(tmpPrice))
 	{
-		return "Insert a numerical value for Contact No.";
+		return "Insert Valid Contact No.";
 	}
 	
+	//Doctor Address
+	if ($("#doctorAdd").val().trim() == "")
+	{
+		return "Insert Address.";
+	}
+	
+	//Doctor Email
+	if ($("#doctorEmail").val().trim() == "")
+	{
+		return "Insert Email.";
+	}
 
 	
-	// DESCRIPTION------------------------
+	// Hospital
 	if ($("#doctorHospital").val().trim() == "")
 	{
-		return "Insert Doctor Description.";
+		return "Insert Hospital.";
 	}
 	
 	return true;

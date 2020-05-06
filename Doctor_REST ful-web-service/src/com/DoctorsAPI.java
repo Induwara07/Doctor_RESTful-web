@@ -47,6 +47,8 @@ public class DoctorsAPI extends HttpServlet {
 										   request.getParameter("doctorName"),
 										   request.getParameter("doctorSpec"),
 										   request.getParameter("doctorCont"),
+										   request.getParameter("doctorAdd"),
+										   request.getParameter("doctorEmail"),
 										   request.getParameter("doctorHospital"));
 			
 		response.getWriter().write(output);
@@ -64,6 +66,8 @@ public class DoctorsAPI extends HttpServlet {
 										   paras.get("doctorName").toString(),
 										   paras.get("doctorSpec").toString(),
 										   paras.get("doctorCont").toString(),
+										   paras.get("doctorAdd").toString(),
+										   paras.get("doctorEmail").toString(),
 										   paras.get("doctorHospital").toString());
 		
 		response.getWriter().write(output);
