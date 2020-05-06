@@ -4,6 +4,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+body {
+    background-image: url("https://www.jakpost.travel/wimages/large/14-142813_keywords-light-plain-color-wallpapers-and-tags-electric.jpg");
+}
+</style>
 <meta charset="ISO-8859-1">
 <title>Doctors Management </title>
 
