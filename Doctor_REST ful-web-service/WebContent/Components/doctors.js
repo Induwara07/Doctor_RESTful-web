@@ -5,10 +5,23 @@ $(document).ready(function()
 		$("#alertSuccess").hide();
 	}
 	
+	$("#doctorCont").focusout(function() {
+		checkContact();
+	});
+	
+	$("#doctorEmail").focusout(function() {
+		checkEmail();
+	});
+	
 	$("#alertError").hide();
 });
 
-//SAVE ============================================
+
+//variables 
+let vContactno = true;
+let vEmail = true;
+
+//SAVE 
 $(document).on("click", "#btnSave", function(event)
 {
 	// Clear alerts---------------------
@@ -27,7 +40,7 @@ $(document).on("click", "#btnSave", function(event)
 		return;
 	}
 	
-	// If valid------------------------
+	// If valid
 	var method = ($("#hidDoctorIDSave").val() == "") ? "POST" : "PUT";
 	
 	$.ajax(
@@ -43,7 +56,7 @@ $(document).on("click", "#btnSave", function(event)
 	});
 });
 
-//UPDATE==========================================
+//UPDATE
 $(document).on("click", ".btnUpdate", function(event)
 {
 	$("#hidDoctorIDSave").val($(this).closest("tr").find('#hidDoctorIDUpdate').val());
@@ -134,52 +147,94 @@ function onDoctorDeleteComplete(response, status)
 }
 
 
+
+
+// email validation
+function checkEmail() {
+	let email = $("#doctorEmail").val().trim();
+	let regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+	if (regex.test(email)) {
+		$("#email_error").hide();
+		return true;
+	} else {
+		$("#email_error").html("Enter valid email");
+		$("#email_error").show();
+		return false;
+	}
+}
+
+
 function validateDoctorForm()
 {
 	// Doctor RegNo.
 	if ($("#doctorCode").val().trim() == "")
 	{
-		return "Insert Doctor RegNo:.";
+		return "Please Insert Doctor RegNo:.";
 	}
 	
 	// Doctor Name
 	if ($("#doctorName").val().trim() == "")
 	{
-		return "Insert Doctor Name.";
+		return "Please Insert Doctor Name.";
 	}
 	
 	//Doctor Specialization
 	if ($("#doctorSpec").val().trim() == "")
 	{
-		return "Insert Doctor Specialization.";
+		return "Please Insert Doctor Specialization.";
 	}
 	
-	// is numerical value
+	// Contact No validation
 	var tmpPrice = $("#doctorCont").val().trim();
 	
 	if (!$.isNumeric(tmpPrice))
 	{
-		return "Insert Valid Contact No.";
+		return "Please Insert Valid Contact No.";
 	}
 	
 	//Doctor Address
 	if ($("#doctorAdd").val().trim() == "")
 	{
-		return "Insert Address.";
+		return "Please Insert Address.";
 	}
 	
 	//Doctor Email
 	if ($("#doctorEmail").val().trim() == "")
 	{
-		return "Insert Email.";
+		return "Please Insert Email.";
 	}
 
 	
 	// Hospital
 	if ($("#doctorHospital").val().trim() == "")
 	{
-		return "Insert Hospital.";
+		return "Please Insert Hospital.";
 	}
 	
 	return true;
+}
+
+function checkContact() {
+	var contact = $("#doctorCont").val().length;
+	
+	if(contact == 10) {
+		$("#error_contact").hide();
+	} else {
+		$("#error_contact").html("This field is required");
+		$("#error_contact").show();
+	}
+}
+
+//email validation
+function checkEmail() {
+	let email = $("#doctorEmail").val().trim();
+	let regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+	if (regex.test(email)) {
+		$("#error_email").hide();
+	} else {
+		$("#error_email").html("Enter valid email");
+		$("#error_email").show();
+	}
 }
