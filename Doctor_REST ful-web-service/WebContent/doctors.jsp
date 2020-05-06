@@ -39,7 +39,7 @@ body {
 				
 				Contact No:
 				<input id="doctorCont" name="doctorCont" type="text" class="form-control form-control-sm">
-				<br>
+				<span style="color:red;" id="error_contact"></span><br>
 				
 				Address:
 				<input id="doctorAdd" name="doctorAdd" type="text" class="form-control form-control-sm">
@@ -47,7 +47,7 @@ body {
 				
 				Email Address:
 				<input id="doctorEmail" name="doctorEmail" type="text" class="form-control form-control-sm">
-				<br>
+				<span style="color:red;" id="error_email"></span><br>
 				 
 				Hospital:
 				<input id="doctorHospital" name="doctorHospital" type="text" class="form-control form-control-sm">
