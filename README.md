@@ -1,3 +1,3 @@
-<H2>PAF Practical Test - IT17108850 Ekanayake U.M.I.S.
+<H2>PAF Practical Test 
 
 <b>Doctor Service</H2></b>
